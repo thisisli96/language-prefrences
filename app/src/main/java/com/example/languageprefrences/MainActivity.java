@@ -1,5 +1,6 @@
 package com.example.languageprefrences;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,10 +8,45 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+    // untuk membuat menu seting
+    public boolean onCreateOptionsMenu(Menu menu){ //
+
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.main_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        super.onOptionsItemSelected(item);
+
+
+        switch (item.getItemId()){
+            case R.id.english:
+               // Log.i("item selected", "settings");
+                setlanguage("GOOD MORNING");
+
+                return true;
+            case R.id.indonesia:
+                //Log.i("irem Seleted", "helps");
+                setlanguage("SELAMAT PAGI");
+
+                return  true;
+            default:
+                return  false;
+        }
+    }
+
+
+// penutup menu setting
 
     // alurnya databasae sharedprefeces atau database lokal ini akan menyimpan alert
     // bahasa yang kita gunakan. dan jika sharedprefrences sudah menerima inputan maka
